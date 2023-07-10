@@ -12,10 +12,8 @@ RUN rm -rf ./*
 COPY --from=boro /app/build .
 
 # Change ownership recursively
-RUN chmod -R 777 /var/cache/nginx/client_temp && \
-    chmod -R 777 /var/run/nginx.pid && \
-    chmod -R 777 /usr/share/nginx/html
-
+RUN chmod -R 777 /usr/share/nginx/html
+USER 1001:0
 EXPOSE 8080
 
 CMD ["nginx", "-g", "daemon off;"]
