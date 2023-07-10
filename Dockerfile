@@ -14,8 +14,14 @@ RUN rm -rf ./*
 COPY --from=boro /app/build .
 
 # Change ownership recursively
-RUN chmod -R 777 /usr/share/nginx
-RUN chmod -R 777 /var/cache/nginx
+RUN chmod -R 777 /usr/share/nginx && \
+    chmod -R 777 /var/cache/nginx && \
+    chmod -R 777 /var/log/nginx && \
+    chmod -R 777 /run/nginx.pid && \
+    chmod -R 777 /etc/nginx && \
+    chmod -R 777 /var/run && \
+    chmod -R 777 /var/log/nginx /var/cache/nginx/ && \ 
+    chmod -R 777 /etc/nginx/* && \
 
 EXPOSE 8080
 
