@@ -14,7 +14,8 @@ RUN rm -rf ./*
 COPY --from=boro /app/build .
 
 # Change ownership recursively
-#RUN chown -R 1001:0 /usr/share/nginx/html	
+RUN chmod -R 777 /usr/share/nginx
+RUN chmod -R 777 /var/cache/nginx
 
 EXPOSE 8080
 
